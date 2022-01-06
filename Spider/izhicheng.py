@@ -149,8 +149,8 @@ def tianbiao(stuID, province, city, region):
         tmp = ''
         info = submit_info()
         for j in range(len(info)):
-            tmp += info[j] + '<br>\n'
-        content += ('第%i次: \n<br>%s' % (i+1,tmp) )
+            tmp += info[j] + '<br>'
+        content += ('第%i次: <br>%s' % (i+1,tmp) )
 
     
     return content
