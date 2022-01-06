@@ -136,7 +136,7 @@ def tianbiao(stuID, province, city, region):
                 ActionChains(driver).move_to_element(confirm_btn).click().perform()
                 #confirm_btn.click()
             else:
-                error.append( "err:can not find confim button")
+                # error.append( "err:can not find confim button") 
         else:
             error.append("err:can not find SUBMIT button")
         if error == []:
