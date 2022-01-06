@@ -136,7 +136,7 @@ def tianbiao(stuID, province, city, region):
                 ActionChains(driver).move_to_element(confirm_btn).click().perform()
                 #confirm_btn.click()
             else:
-                # error.append( "err:can not find confim button") 
+                error.append( "err:can not find confim button") 
         else:
             error.append("err:can not find SUBMIT button")
         if error == []:
@@ -149,8 +149,8 @@ def tianbiao(stuID, province, city, region):
         tmp = ''
         info = submit_info()
         for j in range(len(info)):
-            tmp += info[j] + '<br>'
-        content += ('第%i次: <br>%s' % (i+1,tmp) )
+            tmp += info[j] + '<br>\n'
+        content += ('第%i次: \n<br>%s' % (i+1,tmp) )
 
     
     return content
