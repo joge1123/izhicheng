@@ -29,8 +29,7 @@ regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 10
-successful_num = 0
-failure_num = 0
+
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
 if os.environ.get('GITHUB_RUN_ID', None):
@@ -67,11 +66,11 @@ if os.environ.get('GITHUB_RUN_ID', None):
         print('err: environment config error.Info: ' , err.args)
     
     
-def message(key, title, successful, failure):
+def message(key, title, successful, failure, successful_num, failure_num):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), failure, successful)
+    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>成功：%i<br>疑似失败：%i<br>\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), successful_num, failure_num, failure, successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -217,15 +216,17 @@ def sign_and_check(stuID):
     print(title)
     return seq
 
-def fill_case(successful, failure):
+def fill_case(successful, failure, successful_num, failure_num):
     title = '打卡情况'
-    message(api_key, title, successful, failure)
+    message(api_key, title, successful, failure, successful_num, failure_num)
 
  
 if __name__ == '__main__':
     print(len(stuIDs))
     successful = '成功名单：'
     failure = '疑似失败名单：'
+    successful_num = 0
+    failure_num = 0
 
     if stuIDs != []:
         for i in range(len(stuIDs)):
@@ -237,8 +238,10 @@ if __name__ == '__main__':
             seq = sign_and_check(stuID)
             if seq == 2:
                 successful += ('%s，' % stuID )
+                successful_num += 1
             if seq == 1:
                 failure  += ('%s，' % stuID )
+                failure_num += 1
             
             del(stuID)
             del(province)
@@ -247,7 +250,7 @@ if __name__ == '__main__':
     else:
         sign_and_check(stuID) 
         
-    fill_case(successful, failure)
+    fill_case(successful, failure, successful_num, failure_num)
 
         
         
