@@ -205,10 +205,10 @@ def sign_and_check(stuID):
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
-        List_successful += stuID + '，'
+        List_successful += ('%i，' % stuID )
     else:
         title = "打卡成功"
-        List_failure += stuID + '，'
+        List_failure  += ('%i，' % stuID )
     
     print(title)
 
