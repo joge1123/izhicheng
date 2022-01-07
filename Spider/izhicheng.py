@@ -234,7 +234,7 @@ if __name__ == '__main__':
             seq = sign_and_check(stuID)
             if seq == 1:
                 successful += ('%s，' % stuID )
-            else if seq == 2:
+            if seq == 2:
                 failure  += ('%s，' % stuID )
             
             del(stuID)
