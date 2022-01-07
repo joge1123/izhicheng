@@ -70,7 +70,7 @@ def message(key, title, successful, failure):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %i<br>  <br>打卡总人数: %s<br>  %s  %s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  range(len(stuIDs)), failure, successful)
+    long_content = "<br>Time: %i<br>  <br>打卡总人数: %s<br>  %s  %s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), failure, successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
