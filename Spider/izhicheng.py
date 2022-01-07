@@ -52,10 +52,13 @@ if os.environ.get('GITHUB_RUN_ID', None):
                 regions = []
             else:
                 stuIDs = tmp_stuIDs
-                provinces = provinces
-                citys = citys
-                regions = regions
+                provinces = tmp_provinces
+                citys = tmp_citys
+                regions = tmp_regions
             del(tmp_stuIDs)
+            del(tmp_provinces)
+            del(tmp_citys)
+            del(tmp_regions)
         submit_time = os.environ.get('submit_time', submit_time)
         api_url = os.environ.get('api_url',api_url)
     except Exception as err:
