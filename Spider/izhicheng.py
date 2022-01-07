@@ -71,7 +71,7 @@ def message(key, title):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>%s%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), List_successful, List_failure)
+    long_content = "<br>Time: %s<br>%s%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), successful, failure)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
