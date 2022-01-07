@@ -29,8 +29,8 @@ regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 10
-List_successful = '成功名单：'
-List_failure = '疑似失败名单：'
+successful = '成功名单：'
+failure = '疑似失败名单：'
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
 if os.environ.get('GITHUB_RUN_ID', None):
@@ -205,10 +205,10 @@ def sign_and_check(stuID):
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
-        List_successful += ('%i，' % stuID )
+        successful += ('%i，' % stuID )
     else:
         title = "打卡成功"
-        List_failure  += ('%i，' % stuID )
+        failure  += ('%i，' % stuID )
     
     print(title)
 
