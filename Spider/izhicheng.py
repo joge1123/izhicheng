@@ -28,7 +28,7 @@ citys = []
 regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
-submit_time = 3
+submit_time = 10
 List_successful = '成功名单：'
 List_failure = '疑似失败名单：'
 
