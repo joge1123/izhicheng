@@ -28,7 +28,9 @@ citys = []
 regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
-submit_time = 10
+submit_time = 3
+List_successful = '成功名单：'
+List_failure = '疑似失败名单：'
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
 if os.environ.get('GITHUB_RUN_ID', None):
@@ -69,7 +71,7 @@ def message(key, title,content):
     """
     微信通知打卡结果
     """
-    long_content = "%s<br>Time: %s<br>SchoolNumber: %s<br>" % (content,datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),stuID)
+    long_content = "<br>Time: %s<br>%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), content)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -161,16 +163,15 @@ def tianbiao(stuID, province, city, region):
         else:
             return error 
 
-    content = ''
-    for i in range(submit_time):
-        tmp = ''
-        info = submit_info()
-        for j in range(len(info)):
-            tmp += info[j] + '<br>'
-        content += ('第%i次: <br>%s' % (i+1,tmp) )
-
+#     content = ''
+#     for i in range(submit_time):
+#         tmp = ''
+#         info = submit_info()
+#         for j in range(len(info)):
+#             tmp += info[j] + '<br>'
+#         content += ('第%i次: <br>%s' % (i+1,tmp) )
     
-    return content
+#     return content
     
     driver.quit()
     #except:
@@ -204,11 +205,18 @@ def sign_and_check(stuID):
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
+        List_successful += stuID + '，'
     else:
         title = "打卡成功"
-    message(api_key, title , content )
+        List_failure += stuID + '，'
+    
     print(title)
 
+def fill_case():
+    title = '打卡情况'
+    message(api_key, title , List_successful )
+
+ 
 if __name__ == '__main__':
     print(len(stuIDs))
 
@@ -226,6 +234,7 @@ if __name__ == '__main__':
             del(region)
     else:
         sign_and_check(stuID) 
+    fill_case()
 
         
         
