@@ -29,8 +29,7 @@ regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 10
-successful = '成功名单：'
-failure = '疑似失败名单：'
+
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
 if os.environ.get('GITHUB_RUN_ID', None):
@@ -67,7 +66,7 @@ if os.environ.get('GITHUB_RUN_ID', None):
         print('err: environment config error.Info: ' , err.args)
     
     
-def message(key, title):
+def message(key, title, successful, failure):
     """
     微信通知打卡结果
     """
@@ -205,20 +204,25 @@ def sign_and_check(stuID):
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
-        successful += ('%i，' % stuID )
+        seq = 1
+#         successful += ('%i，' % stuID )
     else:
         title = "打卡成功"
-        failure  += ('%i，' % stuID )
+        seq = 2
+#         failure  += ('%i，' % stuID )
     
     print(title)
+    return seq
 
-def fill_case():
+def fill_case(successful, failure):
     title = '打卡情况'
-    message(api_key, title )
+    message(api_key, title, successful, failure)
 
  
 if __name__ == '__main__':
     print(len(stuIDs))
+    successful = '成功名单：'
+    failure = '疑似失败名单：'
 
     if stuIDs != []:
         for i in range(len(stuIDs)):
@@ -227,7 +231,12 @@ if __name__ == '__main__':
             city = citys[i]
             region = regions[i]
             
-            sign_and_check(stuID)
+            seq = sign_and_check(stuID)
+            if seq == 1:
+                successful += ('%s，' % stuID )
+            else if seq == 2:
+                failure  += ('%s，' % stuID )
+            
             del(stuID)
             del(province)
             del(city)
@@ -235,7 +244,7 @@ if __name__ == '__main__':
     else:
         sign_and_check(stuID) 
         
-    fill_case()
+    fill_case(successful, failure)
 
         
         
