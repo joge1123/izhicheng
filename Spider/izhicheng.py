@@ -29,7 +29,8 @@ regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 10
-
+successful_num = 0
+failure_num = 0
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
 if os.environ.get('GITHUB_RUN_ID', None):
@@ -70,7 +71,7 @@ def message(key, title, successful, failure):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), failure, successful)
+    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>成功：%i<br>失败：%i\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), successful_num, failure_num, failure, successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -204,10 +205,12 @@ def sign_and_check(stuID):
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
+        failure_num += 1
         seq = 1
 #         successful += ('%i，' % stuID )
     else:
         title = "打卡成功"
+        successful_num += 1
         seq = 2
 #         failure  += ('%i，' % stuID )
     
