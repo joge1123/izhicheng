@@ -232,9 +232,9 @@ if __name__ == '__main__':
             region = regions[i]
             
             seq = sign_and_check(stuID)
-            if seq == 1:
-                successful += ('%s，' % stuID )
             if seq == 2:
+                successful += ('%s，' % stuID )
+            if seq == 1:
                 failure  += ('%s，' % stuID )
             
             del(stuID)
