@@ -70,7 +70,7 @@ def message(key, title, successful, failure, successful_num, failure_num):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>成功：%i<br>疑似失败：%i<br>\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), successful_num, failure_num, failure, successful)
+    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>\n\n<br>成功：%i<br>疑似失败：%i<br>\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), successful_num, failure_num, failure, successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -217,7 +217,7 @@ def sign_and_check(stuID):
     return seq
 
 def fill_case(successful, failure, successful_num, failure_num):
-    title = '打卡情况'
+    title = ('打卡情况：疑似失败%i人' % failure_num)
     message(api_key, title, successful, failure, successful_num, failure_num)
 
  
