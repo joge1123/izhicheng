@@ -71,7 +71,7 @@ def message(key, title, successful, failure):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>成功：%i<br>失败：%i\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), successful_num, failure_num, failure, successful)
+    long_content = "<br>Time: %s<br>\n\n<br>打卡总人数: %i<br>%i\n\n%s\n\n%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'),  len(stuIDs), failure, successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -198,19 +198,19 @@ def check_days():
     print(days)
     return days
 
-def sign_and_check(stuID, successful_num, failure_num):
+def sign_and_check(stuID):
     days_before = check_days()
     #days_before = 48
     content = tianbiao(stuID, province, city, region)
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
-        failure_num += 1
+#         failure_num += 1
         seq = 1
 
     else:
         title = "打卡成功"
-        successful_num += 1
+#         successful_num += 1
         seq = 2
 
     
@@ -234,7 +234,7 @@ if __name__ == '__main__':
             city = citys[i]
             region = regions[i]
             
-            seq = sign_and_check(stuID, successful_num, failure_num)
+            seq = sign_and_check(stuID)
             if seq == 2:
                 successful += ('%s，' % stuID )
             if seq == 1:
