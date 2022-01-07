@@ -34,12 +34,15 @@ jobs:
         run: pip install -r ./Spider/requirements.txt
       - name: 'Working'
         env:
+          API_KEY:  ${{secrets.API_KEY}} 
           stuID: ${{secrets.stuID}} 
           province: ${{secrets.province}} 
           city: ${{secrets.city}} 
           region: ${{secrets.region}} 
           stuIDs: ${{secrets.stuIDs}} 
-          API_KEY:  ${{secrets.API_KEY}} 
+          provinces: ${{secrets.provinces}} 
+          citys: ${{secrets.citys}} 
+          regions: ${{secrets.regions}} 
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
