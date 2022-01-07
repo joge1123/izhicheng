@@ -198,7 +198,7 @@ def check_days():
     print(days)
     return days
 
-def sign_and_check(stuID):
+def sign_and_check(stuID, successful_num, failure_num):
     days_before = check_days()
     #days_before = 48
     content = tianbiao(stuID, province, city, region)
@@ -207,12 +207,12 @@ def sign_and_check(stuID):
         title = "疑似打卡失败"
         failure_num += 1
         seq = 1
-#         successful += ('%i，' % stuID )
+
     else:
         title = "打卡成功"
         successful_num += 1
         seq = 2
-#         failure  += ('%i，' % stuID )
+
     
     print(title)
     return seq
@@ -234,7 +234,7 @@ if __name__ == '__main__':
             city = citys[i]
             region = regions[i]
             
-            seq = sign_and_check(stuID)
+            seq = sign_and_check(stuID, successful_num, failure_num)
             if seq == 2:
                 successful += ('%s，' % stuID )
             if seq == 1:
