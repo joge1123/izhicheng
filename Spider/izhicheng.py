@@ -67,11 +67,11 @@ if os.environ.get('GITHUB_RUN_ID', None):
         print('err: environment config error.Info: ' , err.args)
     
     
-def message(key, title,content):
+def message(key, title):
     """
     微信通知打卡结果
     """
-    long_content = "<br>Time: %s<br>%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), content)
+    long_content = "<br>Time: %s<br>%s%s" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), List_successful, List_failure)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
@@ -163,7 +163,7 @@ def tianbiao(stuID, province, city, region):
         else:
             return error 
 
-#     content = ''
+    content = ''
 #     for i in range(submit_time):
 #         tmp = ''
 #         info = submit_info()
@@ -171,7 +171,7 @@ def tianbiao(stuID, province, city, region):
 #             tmp += info[j] + '<br>'
 #         content += ('第%i次: <br>%s' % (i+1,tmp) )
     
-#     return content
+    return content
     
     driver.quit()
     #except:
@@ -214,7 +214,7 @@ def sign_and_check(stuID):
 
 def fill_case():
     title = '打卡情况'
-    message(api_key, title , List_successful )
+    message(api_key, title )
 
  
 if __name__ == '__main__':
@@ -234,6 +234,7 @@ if __name__ == '__main__':
             del(region)
     else:
         sign_and_check(stuID) 
+        
     fill_case()
 
         
