@@ -28,7 +28,7 @@ citys = []
 regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
-submit_time = 1
+submit_time = 3
 
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
@@ -168,8 +168,9 @@ def tianbiao(stuID, province, city, region):
         info = submit_info()
         for j in range(len(info)):
             tmp += info[j] + '<br>'
-        content += ('第%i次: <br>%s' % (i+1,tmp) )
+        content += ('第%i次: <br>%s\n' % (i+1,tmp) )
     
+    print('学号：%s' % stuID)
     print(content)
     return content
     
@@ -213,7 +214,7 @@ def sign_and_check(stuID):
 #         successful_num += 1
         seq = 2
 
-    print(stuID)
+    
     print(title)
     return seq
 
