@@ -170,7 +170,9 @@ def tianbiao(stuID, province, city, region):
             tmp += info[j] + '<br>'
         content += ('第%i次: <br>%s\n' % (i+1,tmp) )
     
-    print('学号：%s' % stuID)
+    text = '学号：' + stuID
+    print(text)
+
     print(content)
     return content
     
