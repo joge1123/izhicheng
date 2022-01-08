@@ -213,7 +213,7 @@ def sign_and_check(stuID):
 #         successful_num += 1
         seq = 2
 
-    
+    print(stuID)
     print(title)
     return seq
 
