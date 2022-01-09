@@ -241,7 +241,7 @@ if __name__ == '__main__':
             
             seq = sign_and_check(stuID)
             text = '学号：' + stuID
-            print(text)
+            print(stuID)
             if seq == 2:
                 successful += ('%s，' % stuID )
                 successful_num += 1
