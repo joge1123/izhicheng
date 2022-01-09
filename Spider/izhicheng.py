@@ -240,6 +240,8 @@ if __name__ == '__main__':
             region = regions[i]
             
             seq = sign_and_check(stuID)
+            text = '学号：' + stuID
+            print(text)
             if seq == 2:
                 successful += ('%s，' % stuID )
                 successful_num += 1
