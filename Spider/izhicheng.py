@@ -176,7 +176,7 @@ def tianbiao(stuID, province, city, region):
     print(content)
     return content
     
-    driver.quit()
+    driver.close()
     #except:
     #    message(api_key, "打卡失败")
 
