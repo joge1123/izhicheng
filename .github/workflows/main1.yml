@@ -39,10 +39,10 @@ jobs:
           province: ${{secrets.province}} 
           city: ${{secrets.city}} 
           region: ${{secrets.region}} 
-          stuIDs: ${{secrets.stuIDs1}} 
-          provinces: ${{secrets.provinces1}} 
-          citys: ${{secrets.citys1}} 
-          regions: ${{secrets.regions1}} 
+          stuIDs: ${{secrets.1_stuIDs}} 
+          provinces: ${{secrets.1_provinces}} 
+          citys: ${{secrets.1_citys}} 
+          regions: ${{secrets.1_regions}} 
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
