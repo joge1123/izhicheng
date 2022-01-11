@@ -19,9 +19,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # 设置全局变量
 stuID = 'stuID'
-province = '福建省'
-city = '福州市'
-region = '鼓楼区'
+province = 'province'
+city = 'city'
+region = 'region'
 stuIDs = []
 provinces = []
 citys = []
