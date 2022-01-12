@@ -221,7 +221,7 @@ def sign_and_check(stuID):
     return seq
 
 def fill_case(successful, failure, successful_num, failure_num):
-    title = ('打卡情况：疑似失败%i人' % failure_num)
+    title = ('打卡情况：打卡总人数%i人' % len(stuIDs))
     message(api_key, title, successful, failure, successful_num, failure_num)
 
  
