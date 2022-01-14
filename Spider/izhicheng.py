@@ -107,7 +107,7 @@ def tianbiao(stuID, province, city, region):
     driver.find_element_by_xpath('//div[@id="SHENG"]').click()
     time.sleep(2)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(province)
-    time.sleep(2)
+    time.sleep(4)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
     time.sleep(2)
 
@@ -115,7 +115,7 @@ def tianbiao(stuID, province, city, region):
     driver.find_element_by_xpath('//div[@id="SHI"]').click()
     time.sleep(2)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(city)
-    time.sleep(2)
+    time.sleep(3)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
     time.sleep(1)
 
@@ -123,7 +123,7 @@ def tianbiao(stuID, province, city, region):
     driver.find_element_by_xpath('//div[@id="QU"]').click()
     time.sleep(2)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(region)
-    time.sleep(2)
+    time.sleep(3)
     driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
     time.sleep(1)
     
@@ -260,4 +260,5 @@ if __name__ == '__main__':
 
         
         
+
         
