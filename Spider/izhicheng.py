@@ -19,13 +19,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # 设置全局变量
 stuID = 'stuID'
-province = '福建省'
-city = '福州市'
-region = '鼓楼区'
+name = '***'
 stuIDs = []
+names = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
-submit_time = 10
+submit_time = 5
 
 
 # 如果检测到程序在 github actions 内运行，那么读取环境变量中的登录信息
@@ -38,11 +37,15 @@ if os.environ.get('GITHUB_RUN_ID', None):
     try:
         if stuIDs == []:
             tmp_stuIDs = os.environ.get('stuIDs','').split('\n')
+            tmp_names = os.environ.get('names','').split('\n')
             if "".join(tmp_stuIDs) == '':
                 stuIDs = []
+                names = []
             else:
                 stuIDs = tmp_stuIDs
+                names = tmp_names
             del(tmp_stuIDs)
+            del(tmp_names)
            
         submit_time = os.environ.get('submit_time', submit_time)
         api_url = os.environ.get('api_url',api_url)
@@ -87,29 +90,7 @@ def tianbiao(stuID, province, city, region):
     driver.maximize_window()  # 全屏
     time.sleep(5)
 
-    # 输入省
-    driver.find_element_by_xpath('//div[@id="SHENG"]').click()
-    time.sleep(2)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(province)
-    time.sleep(4)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-    time.sleep(2)
-
-    # 输入市
-    driver.find_element_by_xpath('//div[@id="SHI"]').click()
-    time.sleep(2)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(city)
-    time.sleep(3)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-    time.sleep(1)
-
-    # 输入区
-    driver.find_element_by_xpath('//div[@id="QU"]').click()
-    time.sleep(2)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(region)
-    time.sleep(3)
-    driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-    time.sleep(1)
+    
     
     # 滚动到底部
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -219,19 +200,19 @@ if __name__ == '__main__':
     if stuIDs != []:
         for i in range(len(stuIDs)):
             stuID = stuIDs[i]
-            
+            name = names[i]
             
             seq = sign_and_check(stuID)
-            text = '学号：' + stuID
-            print(stuID)
+            
             if seq == 2:
-                successful += ('%s，' % stuID )
+                successful += ('%s，' % name )
                 successful_num += 1
             if seq == 1:
-                failure  += ('%s，' % stuID )
+                failure  += ('%s，' % name )
                 failure_num += 1
             
             del(stuID)
+            del(name)
             
     else:
         sign_and_check(stuID) 
