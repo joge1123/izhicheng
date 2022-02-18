@@ -61,7 +61,7 @@ def message(key, title, successful, failure, successful_num, failure_num):
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url,key,title,long_content)
     requests.get(msg_url)
 
-def tianbiao(stuID, province, city, region):
+def tianbiao(stuID):
     
     chrome_options = Options()  # 无界面对象
     chrome_options.add_argument('--headless')  # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
@@ -169,7 +169,7 @@ def check_days():
 def sign_and_check(stuID):
     days_before = check_days()
     #days_before = 48
-    content = tianbiao(stuID, province, city, region)
+    content = tianbiao(stuID)
     days_after = check_days()
     if days_after != days_before+1:
         title = "疑似打卡失败"
