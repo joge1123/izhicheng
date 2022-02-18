@@ -36,13 +36,7 @@ jobs:
         env:
           API_KEY:  ${{secrets.API_KEY}} 
           stuID: ${{secrets.stuID}} 
-          province: ${{secrets.province}} 
-          city: ${{secrets.city}} 
-          region: ${{secrets.region}} 
           stuIDs: ${{secrets.a_stuIDs}} 
-          provinces: ${{secrets.a_provinces}} 
-          citys: ${{secrets.a_citys}} 
-          regions: ${{secrets.a_regions}} 
         run: |
           sudo cp -p ./chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
