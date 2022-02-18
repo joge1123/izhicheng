@@ -19,13 +19,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # 设置全局变量
 stuID = 'stuID'
-province = 'province'
-city = 'city'
-region = 'region'
+province = '福建省'
+city = '福州市'
+region = '鼓楼区'
 stuIDs = []
-provinces = []
-citys = []
-regions = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  #serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 10
@@ -36,30 +33,17 @@ if os.environ.get('GITHUB_RUN_ID', None):
     api_key = os.environ['API_KEY']  # server酱的api，填了可以微信通知打卡结果，不填没影响
     
     stuID = os.environ['stuID']
-    province = os.environ['province']
-    city = os.environ['city']
-    region = os.environ['region']
+    
     
     try:
         if stuIDs == []:
             tmp_stuIDs = os.environ.get('stuIDs','').split('\n')
-            tmp_provinces = os.environ.get('provinces','').split('\n')
-            tmp_citys = os.environ.get('citys','').split('\n')
-            tmp_regions = os.environ.get('regions','').split('\n')
             if "".join(tmp_stuIDs) == '':
                 stuIDs = []
-                provinces = []
-                citys = []
-                regions = []
             else:
                 stuIDs = tmp_stuIDs
-                provinces = tmp_provinces
-                citys = tmp_citys
-                regions = tmp_regions
             del(tmp_stuIDs)
-            del(tmp_provinces)
-            del(tmp_citys)
-            del(tmp_regions)
+           
         submit_time = os.environ.get('submit_time', submit_time)
         api_url = os.environ.get('api_url',api_url)
     except Exception as err:
@@ -235,9 +219,7 @@ if __name__ == '__main__':
     if stuIDs != []:
         for i in range(len(stuIDs)):
             stuID = stuIDs[i]
-            province = provinces[i]
-            city = citys[i]
-            region = regions[i]
+            
             
             seq = sign_and_check(stuID)
             text = '学号：' + stuID
@@ -250,9 +232,7 @@ if __name__ == '__main__':
                 failure_num += 1
             
             del(stuID)
-            del(province)
-            del(city)
-            del(region)
+            
     else:
         sign_and_check(stuID) 
         
