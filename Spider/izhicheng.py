@@ -202,14 +202,14 @@ if __name__ == '__main__':
             stuID = stuIDs[i]
             name = names[i]
             
-           # seq = sign_and_check(stuID)
-            tianbiao(stuID)
-      #      if seq == 2:
-       #         successful += ('%s，' % name )
-       #         successful_num += 1
-       #     if seq == 1:
-            failure  += ('%s，' % name )
-            failure_num += 1
+            seq = sign_and_check(stuID)
+#            tianbiao(stuID)
+            if seq == 2:
+                successful += ('%s，' % name )
+                successful_num += 1
+            if seq == 1:
+                failure  += ('%s，' % name )
+                failure_num += 1
             
             del(stuID)
             del(name)
