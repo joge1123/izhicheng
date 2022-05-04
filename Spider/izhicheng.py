@@ -205,11 +205,11 @@ if __name__ == '__main__':
            # seq = sign_and_check(stuID)
             
       #      if seq == 2:
-                successful += ('%s，' % name )
-                successful_num += 1
+       #         successful += ('%s，' % name )
+       #         successful_num += 1
        #     if seq == 1:
-       #         failure  += ('%s，' % name )
-       #         failure_num += 1
+            failure  += ('%s，' % name )
+            failure_num += 1
             
             del(stuID)
             del(name)
