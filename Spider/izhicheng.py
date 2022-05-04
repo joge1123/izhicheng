@@ -203,7 +203,7 @@ if __name__ == '__main__':
             name = names[i]
             
            # seq = sign_and_check(stuID)
-            
+            tianbiao(stuID)
       #      if seq == 2:
        #         successful += ('%s，' % name )
        #         successful_num += 1
