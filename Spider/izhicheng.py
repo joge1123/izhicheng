@@ -85,7 +85,7 @@ def tianbiao(stuID):
     # 表单地址
     url = 'http://dw10.fdzcxy.edu.cn/datawarn/ReportServer?formlet=app/sjkrb.frm&op=h5&userno=' + stuID + '#/form'
     driver.get(url)  # 打开浏览器
-    time.sleep(25)
+    time.sleep(1)
 
     driver.maximize_window()  # 全屏
     time.sleep(5)
