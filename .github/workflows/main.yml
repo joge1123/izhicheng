@@ -34,6 +34,7 @@ jobs:
       - name: 'Working'
         env:
           students: ${{secrets.students}}
+          names: ${{secrets.names}}
           API_KEY: ${{secrets.API_KEY}}
           check: ${{secrets.check}}
         run: |
