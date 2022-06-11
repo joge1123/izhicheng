@@ -338,7 +338,7 @@ if __name__ == '__main__':
                 while has_try < MAX_TRY:
                     try:
                         AtSchool.sign_and_check(stuID)
-                        print(name + ' 打卡完成')
+                        print(stuID[-3:] + ' 打卡完成')
                         successful += ('%s，' % name )
                         break
                     except:
