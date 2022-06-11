@@ -17,6 +17,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # 设置全局变量
 students = []
+names = []
 api_key = "API_KEY"
 api_url = "https://sctapi.ftqq.com/"  # serverChan 不支持完整的markdown语法且每日请求次数极其有限，请考虑用其他push robot代替，也许这就是高性能的代价（雾
 submit_time = 3
@@ -30,11 +31,15 @@ if os.environ.get('GITHUB_RUN_ID', None):
     try:
         if not students:
             tmp_students = os.environ.get('students', '').split('\n')
+            tmp_names = os.environ.get('names','').split('\n')
             if "".join(tmp_students) == '':
                 students = []
+                names = []
             else:
                 students = tmp_students
+                names = tmp_names
             del tmp_students
+            del tmp_names
         api_url = os.environ.get('api_url', api_url)
     except Exception as err:
         print('err: environment config error.Info: ', err.args)
