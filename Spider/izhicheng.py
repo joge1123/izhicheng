@@ -304,6 +304,7 @@ if __name__ == '__main__':
         has_try = 0  # 尝试次数
         list_temp = students[i].split(' ')
         stuID = list_temp[0]
+        name = names[i]
         if len(list_temp) == 4:
             province = list_temp[1]
             city = list_temp[2]
@@ -325,6 +326,7 @@ if __name__ == '__main__':
                     try:
                         AtHome.tianbiao(stuID, province, city, region)
                         print(stuID[-3:] + ' 打卡完成')
+                        successful += ('%s，' % name )
                         break
                     except:
                         has_try += 1
@@ -349,6 +351,7 @@ if __name__ == '__main__':
                     try:
                         AtSchool.tianbiao(stuID)
                         print(stuID[-3:] + ' 打卡完成')
+                        successful += ('%s，' % name )
                         break
                     except:
                         has_try += 1
