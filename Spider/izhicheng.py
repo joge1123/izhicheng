@@ -45,12 +45,11 @@ if os.environ.get('GITHUB_RUN_ID', None):
         print('err: environment config error.Info: ', err.args)
 
 
-def message(key, title, content):
+def message(key, title, successful):
     """
     微信通知打卡结果
     """
-    long_content = "%s<br>Time: %s<br>SchoolNumber: %s<br>" % (
-        content, datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), stuID)
+    long_content = "<br>Time: %s<br>\n\n<br>%s<br>" % (datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f UTC'), successful)
     msg_url = "%s%s.send?text=%s&desp=%s" % (api_url, key, title, long_content)
     requests.get(msg_url)
 
@@ -142,7 +141,6 @@ class AtSchool():
             title = stuID[-3:] + " 疑似打卡失败"
         else:
             title = stuID[-3:] + " 打卡成功"
-        message(api_key, title, content)
         print(title)
 
 
