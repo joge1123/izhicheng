@@ -291,8 +291,15 @@ def check_days():
     return days
 
 
+def fill_case(successful):
+    title = ('打卡情况：打卡总人数%i人' % len(students))
+    message(api_key, title, successful)
+
+
+
 if __name__ == '__main__':
     print('共有 ' + str(len(students)) + ' 人等待打卡')
+    successful = '成功名单：'
     for i in range(len(students)):
         has_try = 0  # 尝试次数
         list_temp = students[i].split(' ')
@@ -306,6 +313,7 @@ if __name__ == '__main__':
                     try:
                         AtHome.sign_and_check(stuID, province, city, region)
                         print(stuID[-3:] + ' 打卡完成')
+                        successful += ('%s，' % name )
                         break
                     except:
                         has_try += 1
@@ -328,7 +336,8 @@ if __name__ == '__main__':
                 while has_try < MAX_TRY:
                     try:
                         AtSchool.sign_and_check(stuID)
-                        print(stuID[-3:] + ' 打卡完成')
+                        print(name + ' 打卡完成')
+                        successful += ('%s，' % name )
                         break
                     except:
                         has_try += 1
@@ -347,3 +356,4 @@ if __name__ == '__main__':
                         print("重试次数" + str(has_try))
                 del (stuID)
     print("打卡任务全部完成！")
+    fill_case(successful)
