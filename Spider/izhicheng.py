@@ -261,7 +261,6 @@ class AtHome():
             title = stuID[-3:] + " 疑似打卡失败"
         else:
             title = stuID[-3:] + " 打卡成功"
-        message(api_key, title, content)
         print(title)
 
 
