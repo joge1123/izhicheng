@@ -1,3 +1,4 @@
 requests==2.25.1
 selenium==3.141.0
 webdriver_manager
+pip install typing_extensions
