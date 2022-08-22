@@ -33,7 +33,7 @@
  
 
   -  `STUDENTS`: 批量打卡的学号、地址（用空格分隔）
-    ![image](https://user-images.githubusercontent.com/97134659/185920366-a01401a9-df28-46a5-a7a3-15490a54d0b8.png)
+    ![image](https://user-images.githubusercontent.com/97134659/185937224-1c8bf153-ea29-4141-ba1b-58537d2e4eb5.png)
 
 
    -  `A_NAMES`: 批量打卡的姓名
