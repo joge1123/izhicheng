@@ -177,27 +177,27 @@ class AtHome():
 
         # 输入省
         driver.find_element_by_xpath('//div[@id="SHENG"]').click()
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(province)
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(2)
+        time.sleep(4)
 
         # 输入市
         driver.find_element_by_xpath('//div[@id="SHI"]').click()
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(city)
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(1)
+        time.sleep(4)
 
         # 输入区
         driver.find_element_by_xpath('//div[@id="QU"]').click()
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(region)
-        time.sleep(2)
+        time.sleep(4)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(1)
+        time.sleep(4)
 
         # 滚动到底部
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -205,7 +205,7 @@ class AtHome():
         # 确认
         checkbox = driver.find_element_by_xpath('//input[@type="checkbox"]')  # .click()
         ActionChains(driver).move_to_element(checkbox).click().perform()
-        time.sleep(2)
+        time.sleep(4)
 
         def submit_info():
             error = []
