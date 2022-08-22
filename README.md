@@ -23,7 +23,8 @@
 ![image-20211024012249533](https://img2020.cnblogs.com/blog/1535189/202110/1535189-20211024012336425-986933813.png)
 
 - 在仓库设置里面, 设置 `Actions` 如下
-  ![image](https://user-images.githubusercontent.com/97134659/160978272-50488560-16b2-4303-9ba1-ad2f9b589763.png)
+  ![image](https://user-images.githubusercontent.com/97134659/185920098-8e62db39-11d0-4404-92ce-f36177b70e9f.png)
+
 
 
   - `API_KEY`: 你的通知[server酱](http://sc.ftqq.com/3.version)的api key，填写之后可以在程序完成打卡之后通知到微信，如果不填写不影响使用(类似的操作)
@@ -31,11 +32,12 @@
 
  
 
-  -  `A_stuIDs`: 批量打卡的学号（目前只支持单一地址，比如都在学校）
-     ![image](https://user-images.githubusercontent.com/97134659/160978691-31a13c84-5100-4166-a2a0-c54315911287.png)
+  -  `STUDENTS`: 批量打卡的学号、地址（用空格分隔）
+    ![image](https://user-images.githubusercontent.com/97134659/185920366-a01401a9-df28-46a5-a7a3-15490a54d0b8.png)
+
 
    -  `A_NAMES`: 批量打卡的姓名
-    ![image](https://user-images.githubusercontent.com/97134659/160978879-846875ee-74d2-4d84-9650-2e70c5bf9c95.png)
+   ![image](https://user-images.githubusercontent.com/97134659/185920450-98c06de6-4ffb-45df-bc0a-527102738e42.png)
 
 
   
