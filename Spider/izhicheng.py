@@ -177,27 +177,27 @@ class AtHome():
 
         # 输入省
         driver.find_element_by_xpath('//div[@id="SHENG"]').click()
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(province)
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(4)
+        time.sleep(2)
 
         # 输入市
         driver.find_element_by_xpath('//div[@id="SHI"]').click()
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(city)
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(4)
+        time.sleep(2)
 
         # 输入区
         driver.find_element_by_xpath('//div[@id="QU"]').click()
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n r-1pi2tsx"]//input').send_keys(region)
-        time.sleep(4)
+        time.sleep(3)
         driver.find_element_by_xpath('//div[@class="css-1dbjc4n"]/div[@class="css-901oao css-cens5h"]/span').click()
-        time.sleep(4)
+        time.sleep(2)
 
         # 滚动到底部
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
